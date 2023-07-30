@@ -13,10 +13,4 @@ after_success:
   - docker build -t ofovweewere/multi-nginx ./nginx
   - docker build -t ofovweewere/multi-server ./server
   - docker build -t ofovweewere/multi-worker ./worker
-  # Log in to the docker CLI
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push ofovweewere/multi-client
-  - docker push ofovweewere/multi-nginx
-  - docker push ofovweewere/multi-server
-  - docker push ofovweewere/multi-worker
