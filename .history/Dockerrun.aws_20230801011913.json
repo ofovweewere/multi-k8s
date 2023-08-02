@@ -1,0 +1,23 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "emanewere/multi-client",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "emanewere/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "workder",
+      "image": "emanewere/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    }
+  ]
+}
