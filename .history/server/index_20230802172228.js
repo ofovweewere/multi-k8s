@@ -11,18 +11,18 @@ app.use(bodyParser.json());
 
 //Postgres client setup
 const { Pool } = require("pg");
-const pgClient = new Pool({
-  user: keys.pgUser,
-  host: keys.pgHost,
-  database: keys.pgDatabase,
-  password: keys.pgPassword,
-  port: keys.pgPort,
-});
-pgClient.on("connect", (client) => {
-  client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
-    .catch((err) => console.error(err));
-});
+// const pgClient = new Pool({
+//   user: keys.pgUser,
+//   host: keys.pgHost,
+//   database: keys.pgDatabase,
+//   password: keys.pgPassword,
+//   port: keys.pgPort,
+// });
+// pgClient.on("connect", (client) => {
+//   client
+//     .query("CREATE TABLE IF NOT EXISTS values (number INT)")
+//     .catch((err) => console.error(err));
+// });
 
 //Redis client setup
 const redis = require("redis");
@@ -58,7 +58,7 @@ app.post("/values", async (req, res) => {
   }
   redisClient.hset("values", index, "Nothing yet!");
   redisPublisher.publish("insert", index);
-  pgClient.query("INSERT INTO values(number) VALUES($1)", [index]);
+  //pgClient.query("INSERT INTO values(number) VALUES($1)", [index]);
 
   res.send({ working: true });
 });
