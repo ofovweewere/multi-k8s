@@ -10,7 +10,7 @@ class Fib extends Component {
 
   componentDidMount() {
     this.fetchValues();
-    //this.fetchIndexes();
+    this.fetchIndexes();
   }
 
   async fetchValues() {
